@@ -1,38 +1,54 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 
 export default function Hero() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth out the spotlight movement
+  const springConfig = { damping: 50, stiffness: 300 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    const handleMouse = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
+    const handleMouse = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
     const handleTouch = (e: TouchEvent) => {
       if (e.touches.length > 0) {
-        setMousePos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+        mouseX.set(e.touches[0].clientX);
+        mouseY.set(e.touches[0].clientY);
       }
     };
     
     window.addEventListener('mousemove', handleMouse);
-    window.addEventListener('touchmove', handleTouch);
+    window.addEventListener('touchmove', handleTouch, { passive: true });
     
     return () => {
       window.removeEventListener('mousemove', handleMouse);
       window.removeEventListener('touchmove', handleTouch);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
   const titleWords = "RG TECH".split("");
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Spotlight */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-0 opacity-40 transition-opacity duration-1000"
+      {/* Background Spotlight Optimized with direct motion transforms to prevent glitches */}
+      <motion.div 
+        className="absolute w-[600px] h-[600px] pointer-events-none z-0 opacity-40 rounded-full"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 210, 255, 0.08), transparent 80%)`
+          background: "radial-gradient(circle, rgba(0, 210, 255, 0.12), transparent 70%)",
+          x: smoothX,
+          y: smoothY,
+          translateX: "-50%",
+          translateY: "-50%",
+          left: 0,
+          top: 0,
         }}
       />
 
@@ -43,7 +59,7 @@ export default function Hero() {
               key={i}
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: i * 0.08, duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ delay: i * 0.08, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
               className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[14rem] font-bold text-white tracking-tighter hero-text leading-none block"
             >
               {word === " " ? "\u00A0" : word}
@@ -54,7 +70,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
           className="text-[8px] sm:text-[10px] md:text-xs text-white/30 font-medium tracking-[0.4em] sm:tracking-[0.8em] uppercase mb-10 md:mb-12 block"
         >
           System Initializing // Advanced Architecture
@@ -63,7 +79,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 0.8 }}
           className="flex justify-center"
         >
           <MagneticButton>
