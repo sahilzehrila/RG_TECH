@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #02040a;
+  --foreground: #ffffff;
+  --accent: #00d2ff;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+  font-feature-settings: "ss01", "ss02", "cv01";
+}
+
+/* 1. Futuristic Mesh Background with Parallax */
+.mesh-bg {
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: -1;
+  background: 
+    radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 210, 255, 0.03) 0px, transparent 50%),
+    #02040a;
+  animation: mesh-float 60s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes mesh-float {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-2%, -2%) scale(1.05); }
+}
+
+/* 2. Sophisticated Grid Overlay */
+.mesh-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  opacity: 0.15;
+}
+
+/* 3. Refined Glassmorphism */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-morphism:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  box-shadow: 0 0 40px rgba(0, 210, 255, 0.05);
+}
+
+/* 4. Elegant Typography */
+.hero-text {
+  background: linear-gradient(to bottom, #fff 30%, rgba(255,255,255,0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+}
+
+/* 5. Minimal Reading Progress */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 10000;
+  transition: width 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 6. Precision Scanline */
+.scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+button:hover .scanline {
+  animation: scan 1.5s infinite;
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+/* Grain/Noise for Texture */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+  will-change: transform;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  30% { transform: translate(5%, 2%); }
+  50% { transform: translate(-2%, 5%); }
+  70% { transform: translate(3%, -2%); }
+  90% { transform: translate(-3%, 1%); }
+}
+
+/* Hide scrollbar but allow scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

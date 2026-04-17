@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "title": "RG BASKET",
+    "description": "High-velocity E-commerce ecosystem. Optimized for seamless transactions.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Frgbasket.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://rgbasket.vercel.app",
+    "tags": ["Next.js", "E-commerce", "Stripe"]
+  },
+  {
+    "id": "2",
+    "title": "MILAN STUDIO",
+    "description": "Professional studio management and high-fidelity visual gallery.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fmilan-studio-rho.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://milan-studio-rho.vercel.app",
+    "tags": ["Photography", "Studio", "Gallery"]
+  },
+  {
+    "id": "3",
+    "title": "SHREE PRAKASHAN",
+    "description": "Modern publishing platform for decentralized literature distribution.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fshree-prakashan.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://shree-prakashan.vercel.app",
+    "tags": ["Publishing", "Books", "CMS"]
+  },
+  {
+    "id": "4",
+    "title": "ORYA CAFE",
+    "description": "Premium culinary interface for immersive digital ordering.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Forya-cafe.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://orya-cafe.vercel.app",
+    "tags": ["Hospitality", "Cafe", "Menu"]
+  },
+  {
+    "id": "5",
+    "title": "FUNNY BLOGGER",
+    "description": "Interactive content hub for high-engagement storytelling.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fthefunnyblogger.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://thefunnyblogger.vercel.app",
+    "tags": ["Blog", "Content", "SEO"]
+  },
+  {
+    "id": "6",
+    "title": "SONU PORTFOLIO",
+    "description": "Bespoke digital identity with ultra-modern creative showcase.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fsonu-nine.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://sonu-nine.vercel.app",
+    "tags": ["Portfolio", "Creative", "Framer"]
+  }
+]
