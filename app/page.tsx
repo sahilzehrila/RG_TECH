@@ -3,6 +3,7 @@
 import { useScroll, useTransform, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
+import Services from '@/components/Services';
 import ScrollReveal from '@/components/ScrollReveal';
 
 import { GlobeDemo } from '@/components/GlobeDemo';
@@ -42,6 +43,10 @@ export default function Home() {
         <Hero />
         
         <ScrollReveal parallax={50}>
+          <Services />
+        </ScrollReveal>
+
+        <ScrollReveal parallax={40}>
           <ProjectGrid />
         </ScrollReveal>
         

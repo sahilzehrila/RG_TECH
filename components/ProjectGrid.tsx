@@ -31,6 +31,7 @@ export default function ProjectGrid() {
       .then(data => setProjects(data));
 
     const handleResize = () => {
+      // Set to horizontal (slider) for mobile and tablet, vertical (grid) for desktop
       if (window.innerWidth >= 1024) {
         setView('vertical');
       } else {
@@ -85,6 +86,7 @@ export default function ProjectGrid() {
   };
 
   function ProjectCard({ project, index }: { project: Project, index: number }) {
+    const [imageLoaded, setImageLoaded] = useState(false);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const mouseXSpring = useSpring(x, { damping: 25, stiffness: 150 });
@@ -110,14 +112,14 @@ export default function ProjectGrid() {
         onMouseLeave={() => { x.set(0); y.set(0); }}
         onClick={() => openModal(project)}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className={`group glass-morphism rounded-[2.5rem] cursor-pointer flex-shrink-0 transition-shadow duration-500 hover:shadow-[0_20px_80px_rgba(255,255,255,0.03)] active:scale-[0.98] ${
-          view === 'vertical' ? "w-full p-6" : "w-[85vw] md:w-[600px] p-6 md:p-8 snap-center"
+        className={`group glass-morphism rounded-[2rem] md:rounded-[2.5rem] cursor-pointer flex-shrink-0 transition-shadow duration-500 hover:shadow-[0_20px_80px_rgba(255,255,255,0.03)] active:scale-[0.98] ${
+          view === 'vertical' ? "w-full p-6" : "w-[70vw] sm:w-[45vw] md:w-[600px] p-4 md:p-8 snap-center"
         }`}
       >
         <div style={{ transform: "translateZ(60px)" }} className="relative">
-          <div className="aspect-video mb-8 overflow-hidden rounded-[2rem] relative bg-black/40 border border-white/5">
-            <div className="w-full h-full transition-transform duration-1000 group-hover:scale-110 relative">
-              {project.imageUrl ? (
+          <div className="aspect-video mb-4 md:mb-8 overflow-hidden rounded-[1.5rem] md:rounded-[2rem] relative bg-black/40 border border-white/5">
+            <div className={`w-full h-full transition-all duration-1000 group-hover:scale-110 relative ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              {project.imageUrl && (
                 <Image 
                   src={project.imageUrl} 
                   alt={project.title}
@@ -125,10 +127,9 @@ export default function ProjectGrid() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                   priority={index < 3}
-                  unoptimized // Since these are dynamic screenshots, optimization might be tricky on some providers
+                  onLoad={() => setImageLoaded(true)}
+                  unoptimized 
                 />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-white/5 text-6xl md:text-8xl font-black uppercase">RG</div>
               )}
               <div className="absolute inset-0 bg-black/60 md:bg-black/40 opacity-0 md:group-hover:opacity-100 transition-all flex items-center justify-center backdrop-blur-sm z-10">
                 <span className="px-8 py-3 rounded-full bg-white text-black font-black text-[10px] uppercase tracking-[0.3em]">
@@ -136,6 +137,15 @@ export default function ProjectGrid() {
                 </span>
               </div>
             </div>
+
+            {/* Title Placeholder / Loader */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center bg-white/5 animate-pulse">
+                <span className="text-white/10 text-xl md:text-3xl font-black uppercase tracking-tighter text-center px-4 leading-none">
+                  {project.title}
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="space-y-4">

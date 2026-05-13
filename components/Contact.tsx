@@ -102,6 +102,7 @@ export default function Contact() {
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-xs outline-none focus:border-white/30 transition-all appearance-none cursor-pointer"
               >
                 <option className="bg-[#050914]" value="Web Development">Web Development</option>
+                <option className="bg-[#050914]" value="Android Development">Android Development</option>
                 <option className="bg-[#050914]" value="CRM / ERP">CRM / ERP Systems</option>
                 <option className="bg-[#050914]" value="Custom Software">Custom Software</option>
                 <option className="bg-[#050914]" value="Digital Marketing">Digital Marketing</option>

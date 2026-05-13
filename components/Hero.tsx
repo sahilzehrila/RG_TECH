@@ -53,13 +53,22 @@ export default function Hero() {
       />
 
       <div className="z-10 text-center px-5">
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-[10px] sm:text-xs md:text-sm text-cyan-500 font-bold tracking-[0.4em] uppercase mb-4 block"
+        >
+          Premier Software Development Studio
+        </motion.p>
+
         <div className="overflow-hidden flex justify-center mb-6 md:mb-8">
           {titleWords.map((word, i) => (
             <motion.span
               key={i}
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: i * 0.08, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ delay: i * 0.08 + 0.5, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
               className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[14rem] font-bold text-white tracking-tighter hero-text leading-none block"
             >
               {word === " " ? "\u00A0" : word}
@@ -67,14 +76,18 @@ export default function Hero() {
           ))}
         </div>
         
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-[8px] sm:text-[10px] md:text-xs text-white/30 font-medium tracking-[0.4em] sm:tracking-[0.8em] uppercase mb-10 md:mb-12 block"
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="max-w-2xl mx-auto"
         >
-          System Initializing // Advanced Architecture
-        </motion.p>
+          <p className="text-[11px] sm:text-sm md:text-base text-white/50 font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase mb-10 md:mb-12 leading-relaxed">
+            We engineer high-performance <span className="text-white">Web Applications</span>, 
+            scalable <span className="text-white">Android Systems</span>, 
+            and bespoke <span className="text-white">Enterprise Software</span>.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

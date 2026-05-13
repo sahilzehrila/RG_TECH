@@ -1,0 +1,28 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "morphism",
+    "drei",
+    "three-globe",
+    "ThreeGlobe",
+    "lucide",
+    "framer",
+    "nextjs",
+    "tailwindcss",
+    "postcss",
+    "autoprefixer",
+    "threejs",
+    "microlink",
+    "vercel",
+    "geojson",
+    "scanline",
+    "parallax",
+    "inter"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    ".next",
+    "package-lock.json"
+  ]
+}

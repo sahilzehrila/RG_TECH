@@ -17,11 +17,11 @@
   },
   {
     "id": "3",
-    "title": "SHREE PRAKASHAN",
-    "description": "Modern publishing platform for decentralized literature distribution.",
-    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fshree-prakashan.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
-    "link": "https://shree-prakashan.vercel.app",
-    "tags": ["Publishing", "Books", "CMS"]
+    "title": "PROPERTY PARTNER",
+    "description": "Comprehensive real estate ecosystem for modern property discovery and management.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fproperty-partner.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://property-partner.vercel.app",
+    "tags": ["Real Estate", "Property", "Management"]
   },
   {
     "id": "4",

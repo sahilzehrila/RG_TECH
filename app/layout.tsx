@@ -10,8 +10,8 @@ import Loader from "@/components/Loader";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RG TECH | Hyper-Futuristic Solutions",
-  description: "Next-gen web development with neon aesthetics.",
+  title: "RG TECH | Web • Android • Software Development",
+  description: "Premier software development studio specializing in high-performance web applications, scalable android systems, and bespoke enterprise solutions.",
   icons: {
     icon: "/icon.svg",
   },
