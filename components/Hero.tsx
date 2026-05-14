@@ -63,17 +63,19 @@ export default function Hero() {
         </motion.p>
 
         <div className="overflow-hidden flex justify-center mb-6 md:mb-8">
-          {titleWords.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: i * 0.08 + 0.5, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-              className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[14rem] font-bold text-white tracking-tighter hero-text leading-none block"
-            >
-              {word === " " ? "\u00A0" : word}
-            </motion.span>
-          ))}
+          <h1 className="flex">
+            {titleWords.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: i * 0.08 + 0.5, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[14rem] font-bold text-white tracking-tighter hero-text leading-none block"
+              >
+                {word === " " ? "\u00A0" : word}
+              </motion.span>
+            ))}
+          </h1>
         </div>
         
         <motion.div
@@ -83,9 +85,9 @@ export default function Hero() {
           className="max-w-2xl mx-auto"
         >
           <p className="text-[11px] sm:text-sm md:text-base text-white/50 font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase mb-10 md:mb-12 leading-relaxed">
-            We engineer high-performance <span className="text-white">Web Applications</span>, 
+            The leading <span className="text-white">Software Solution in Odisha</span> engineering high-performance <span className="text-white">Web Applications</span>, 
             scalable <span className="text-white">Android Systems</span>, 
-            and bespoke <span className="text-white">Enterprise Software</span>.
+            and bespoke <span className="text-white">Enterprise Software</span> in India.
           </p>
         </motion.div>
 

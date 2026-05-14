@@ -146,7 +146,7 @@ export default function Pricing() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
         <div>
           <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white tracking-tighter hero-text uppercase leading-tight">Service<br className="md:hidden" /> Architecture</h2>
-          <p className="text-white/20 text-[9px] tracking-[0.6em] uppercase mt-4">Pricing Modules // {view === 'horizontal' ? 'Active_Slide' : 'Static_Grid'}</p>
+          <p className="text-white/20 text-[9px] tracking-[0.6em] uppercase mt-4">Transparent Software Development Pricing in Odisha // {view === 'horizontal' ? 'Active_Slide' : 'Static_Grid'}</p>
         </div>
       </div>
       <div className="relative">

@@ -124,7 +124,7 @@ export default function Services() {
     <section id="services" className="py-24 px-5 md:px-10 max-w-7xl mx-auto relative overflow-hidden">
       <div className="mb-20">
         <h2 className="text-4xl md:text-8xl font-bold text-white tracking-tighter hero-text uppercase">Expertise</h2>
-        <p className="text-white/20 text-[9px] tracking-[0.6em] uppercase mt-4">Core_Capabilities // Systems_Analysis</p>
+        <p className="text-white/20 text-[9px] tracking-[0.6em] uppercase mt-4">Core_Capabilities // Software Solutions Odisha & India</p>
       </div>
 
       {/* Mobile View: Independent Row Carousels */}

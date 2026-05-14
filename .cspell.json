@@ -18,7 +18,13 @@
     "geojson",
     "scanline",
     "parallax",
-    "inter"
+    "inter",
+    "Odisha",
+    "Orya",
+    "B.Tech",
+    "M.Tech",
+    "Bhubaneswar",
+    "ecommerce"
   ],
   "ignorePaths": [
     "node_modules",
