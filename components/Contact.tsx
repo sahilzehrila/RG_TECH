@@ -19,12 +19,10 @@ export default function Contact() {
     const random = Math.random();
     let targetNumber = '';
     
-    if (random < 0.5) {
+    if (random < 0.75) {
       targetNumber = '916370810878';
-    } else if (random < 0.75) {
-      targetNumber = '919348752685';
     } else {
-      targetNumber = '919938303324';
+      targetNumber = '919348752685';
     }
 
     const message = `*NEW INQUIRY: RG TECH*\n\n` +
