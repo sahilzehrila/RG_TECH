@@ -102,6 +102,9 @@ export default function Contact() {
                 <option className="bg-[#050914]" value="Web Development">Web Development</option>
                 <option className="bg-[#050914]" value="Android Development">Android Development</option>
                 <option className="bg-[#050914]" value="CRM / ERP">CRM / ERP Systems</option>
+                <option className="bg-[#050914]" value="Modded Software">Modded Software</option>
+                <option className="bg-[#050914]" value="Graphic Design">Graphic Design</option>
+                <option className="bg-[#050914]" value="Academic Projects">Academic Projects</option>
                 <option className="bg-[#050914]" value="Custom Software">Custom Software</option>
                 <option className="bg-[#050914]" value="Digital Marketing">Digital Marketing</option>
               </select>
