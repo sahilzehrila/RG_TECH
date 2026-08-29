@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import Sparkles from "@/components/Sparkles";
 import Loader from "@/components/Loader";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -146,6 +147,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );

@@ -101,6 +101,12 @@ button:hover .scanline {
   to { transform: translateY(100%); }
 }
 
+/* WhatsApp specific animations */
+@keyframes whatsapp-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.3; }
+}
+
 /* Grain/Noise for Texture */
 .noise {
   position: fixed;

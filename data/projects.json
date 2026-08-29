@@ -46,5 +46,29 @@
     "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fsonu-nine.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
     "link": "https://sonu-nine.vercel.app",
     "tags": ["Portfolio", "Creative", "Framer"]
+  },
+  {
+    "id": "7",
+    "title": "NAMASKAR HOTELS",
+    "description": "Modern hospitality platform for hotel discovery and seamless booking experiences.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fnamaskar-hotels.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://namaskar-hotels.vercel.app/",
+    "tags": ["Hospitality", "Hotels", "Booking"]
+  },
+  {
+    "id": "8",
+    "title": "UTKAL ACADEMY LIBRARY",
+    "description": "Digital library experience for academic resources, browsing, and structured learning.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Futkal-academy-library.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://utkal-academy-library.vercel.app/",
+    "tags": ["Education", "Library", "Academy"]
+  },
+  {
+    "id": "9",
+    "title": "PROTINE BOWL",
+    "description": "Nutrition-focused food ordering interface for protein-rich meals and bowls.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fprotine-bowl.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://protine-bowl.vercel.app/",
+    "tags": ["Food", "Nutrition", "Ordering"]
   }
 ]
