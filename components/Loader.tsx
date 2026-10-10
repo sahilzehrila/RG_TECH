@@ -38,7 +38,7 @@ export default function Loader() {
       return;
     }
 
-    const DURATION = 750;
+    const DURATION = 350;
     const startTime = Date.now();
     
     springProgress.set(100);
@@ -69,10 +69,11 @@ export default function Loader() {
           key="software-studio-loader"
           initial={{ opacity: 1 }}
           exit={{ 
-            y: "-100%",
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+            opacity: 0,
+            scale: 1.02,
+            transition: { duration: 0.35, ease: [0.23, 1, 0.32, 1] }
           }}
-          className="fixed inset-0 z-[10000] bg-[#02040a] flex flex-col items-center justify-center overflow-hidden will-change-transform"
+          className="fixed inset-0 z-[10000] bg-[#02040a] flex flex-col items-center justify-center overflow-hidden pointer-events-auto"
         >
           {/* Top Progress Bar */}
           <div className="absolute top-0 left-0 w-full h-[3px] bg-white/5 overflow-hidden">

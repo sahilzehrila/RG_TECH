@@ -43,7 +43,7 @@ export default function Cursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full mix-blend-difference pointer-events-none z-[10000]"
+        className="fixed top-0 left-0 w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-[0_0_10px_#00d2ff] pointer-events-none z-[10000]"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       />
       <motion.div

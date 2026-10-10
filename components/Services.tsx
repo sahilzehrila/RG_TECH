@@ -259,7 +259,7 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="liquid-card glass-morphism p-8 md:p-10 rounded-[2.5rem] transition-all group relative overflow-hidden"
+            className="glass-morphism p-8 md:p-10 rounded-[2.5rem] transition-colors duration-300 group relative overflow-hidden"
           >
             <div className="flex justify-between items-center mb-8">
               <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-cyan-400 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/10 group-hover:scale-105 transition-all duration-500">

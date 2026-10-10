@@ -8,7 +8,7 @@ import Sparkles from "@/components/Sparkles";
 import Loader from "@/components/Loader";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rg-tech.vercel.app"),
@@ -133,6 +133,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="preconnect" href="https://api.microlink.io" />
+        <link rel="dns-prefetch" href="https://api.microlink.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

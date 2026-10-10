@@ -47,6 +47,25 @@ export function GlobeDemo() {
     { order: 4, startLat: -34.6037, startLng: -58.3816, endLat: 22.3193, endLng: 114.1694, arcAlt: 0.7, color: colors[2] },
   ];
 
+  const [isInView, setIsInView] = React.useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '350px' }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     if (!containerRef.current || !textColRef.current) return;
 
@@ -96,7 +115,13 @@ export function GlobeDemo() {
           {/* Seamless Globe Wrapper */}
           <div className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] flex items-center justify-center order-2 overflow-hidden lg:overflow-visible">
             <div className="w-full h-full origin-center">
-              <World data={sampleArcs} globeConfig={globeConfig} />
+              {isInView ? (
+                <World data={sampleArcs} globeConfig={globeConfig} />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-white/10 uppercase tracking-widest text-[9px] font-mono animate-pulse">
+                  Standby Global Visualizer...
+                </div>
+              )}
             </div>
           </div>
         </div>

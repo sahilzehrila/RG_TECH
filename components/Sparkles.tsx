@@ -47,6 +47,45 @@ export default function Sparkles() {
       }
     };
 
+    let animationFrame: number | null = null;
+    let isRunning = false;
+
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.current = particles.current.filter(p => p.life > 0);
+      
+      ctx.shadowBlur = 0;
+      
+      for (let i = 0; i < particles.current.length; i++) {
+        const p = particles.current[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.03;
+        p.size *= 0.97;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color}, ${p.life * 0.8})`;
+        ctx.fill();
+      }
+
+      if (particles.current.length > 0) {
+        animationFrame = requestAnimationFrame(render);
+      } else {
+        isRunning = false;
+        animationFrame = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    };
+
+    const startAnimation = () => {
+      if (!isRunning) {
+        isRunning = true;
+        animationFrame = requestAnimationFrame(render);
+      }
+    };
+
     let lastInteractionTime = 0;
     const handleInteraction = (e: MouseEvent | TouchEvent) => {
       const now = Date.now();
@@ -56,54 +95,21 @@ export default function Sparkles() {
       const x = 'clientX' in e ? e.clientX : e.touches[0].clientX;
       const y = 'clientY' in e ? e.clientY : e.touches[0].clientY;
       createParticle(x, y);
+      startAnimation();
     };
 
-    let lastScrollTime = 0;
-    const handleScroll = () => {
-      // No random particles on scroll to prevent "noisy" UI
-    };
-
-    window.addEventListener('mousemove', handleInteraction);
+    window.addEventListener('mousemove', handleInteraction, { passive: true });
     window.addEventListener('touchstart', handleInteraction, { passive: true });
     window.addEventListener('touchmove', handleInteraction, { passive: true });
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
     resize();
-
-    let animationFrame: number;
-    const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      particles.current = particles.current.filter(p => p.life > 0);
-      
-      // Batch drawing for performance
-      ctx.shadowBlur = 0; // Disable expensive shadow blur
-      
-      for (let i = 0; i < particles.current.length; i++) {
-        const p = particles.current[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life -= 0.03; // Faster fade out
-        p.size *= 0.97;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, ${p.life * 0.8})`;
-        ctx.fill();
-      }
-
-      animationFrame = requestAnimationFrame(render);
-    };
-
-    render();
 
     return () => {
       window.removeEventListener('mousemove', handleInteraction);
       window.removeEventListener('touchstart', handleInteraction);
       window.removeEventListener('touchmove', handleInteraction);
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrame);
+      if (animationFrame) cancelAnimationFrame(animationFrame);
     };
   }, []);
 

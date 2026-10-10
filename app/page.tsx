@@ -18,15 +18,10 @@ const Contact = dynamic(() => import('@/components/Contact'), {
   ssr: false 
 });
 
-const LiquidGlassController = dynamic(() => import('@/components/LiquidGlassController'), { 
-  ssr: false 
-});
-
 export default function Home() {
   return (
     <main className="relative min-h-screen">
       <div className="relative z-10">
-        <LiquidGlassController />
         <Hero />
 
         <ScrollReveal parallax={50}>

@@ -112,13 +112,13 @@ function DesktopPricingCard({ plan, index, currency }: { plan: Plan; index: numb
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: index * 0.08 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`group liquid-card glass-morphism rounded-[2.2rem] p-6 lg:p-7 flex flex-col justify-between transition-all duration-500 relative ${plan.highlight
+      style={{ rotateX, rotateY }}
+      className={`group glass-morphism rounded-[2.2rem] p-6 lg:p-7 flex flex-col justify-between transition-colors duration-300 transform-gpu will-change-transform relative ${plan.highlight
           ? 'border-cyan-500/40 bg-white/[0.04] shadow-[0_0_50px_-15px_rgba(0,210,255,0.2)] ring-1 ring-cyan-500/30'
           : 'border-white/10 hover:border-white/20'
         }`}
     >
-      <div style={{ transform: "translateZ(30px)" }}>
+      <div>
         {plan.highlight ? (
           <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-5 shadow-[0_0_20px_rgba(0,210,255,0.3)]">
             <Sparkles size={11} className="text-black" />
@@ -161,7 +161,7 @@ function DesktopPricingCard({ plan, index, currency }: { plan: Plan; index: numb
         </ul>
       </div>
 
-      <div style={{ transform: "translateZ(30px)" }}>
+      <div>
         <MagneticButton>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -285,7 +285,7 @@ export default function Pricing() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className={`liquid-card glass-morphism rounded-[1.8rem] p-5 sm:p-6 border transition-all ${activeMobilePlan.highlight
+            className={`glass-morphism rounded-[1.8rem] p-5 sm:p-6 border transition-all ${activeMobilePlan.highlight
                 ? 'border-cyan-500/40 bg-white/[0.04] shadow-[0_0_40px_-10px_rgba(0,210,255,0.18)] ring-1 ring-cyan-500/30'
                 : 'border-white/10'
               }`}
