@@ -9,7 +9,7 @@ export default function WhatsAppFloat() {
   const [isDragging, setIsDragging] = useState(false);
   const dragRef = useRef<HTMLAnchorElement>(null);
   const phoneNumber = '6370810878';
-  const message = encodeURIComponent('Hello! I am interested in your services.');
+  const message = encodeURIComponent('Hello RG TECH! I would like to discuss a software development project.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -107,7 +107,7 @@ export default function WhatsAppFloat() {
         animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 10 }}
         transition={{ duration: 0.2 }}
       >
-        <span className="text-xs font-medium text-white/90">Chat with us</span>
+        <span className="text-xs font-medium text-white/90">Software Consultation</span>
         {/* Arrow */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-white/10 border-r border-t border-white/20 rotate-45" />
       </motion.div>

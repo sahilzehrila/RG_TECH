@@ -20,33 +20,33 @@ export default function TermsPage() {
       <div id="reading-progress" style={{ width: `${progress}%` }} />
 
       <h1 className="text-5xl md:text-8xl font-bold mb-16 text-white tracking-tighter hero-text uppercase">
-        Service Protocols
+        Terms of Service
       </h1>
 
       <div className="space-y-16 text-white/60 leading-relaxed text-xs md:text-sm uppercase tracking-widest">
         <section className="space-y-6">
           <h2 className="text-lg font-bold text-white tracking-tighter flex items-center gap-4">
             <span className="w-12 h-[1px] bg-white/20" />
-            01. Core Services
+            01. Core Software Services
           </h2>
           <p className="pl-16 border-l border-white/5">
-            RG TECH provides professional development in Web Architectures (starting ₹10,000), Custom CRM Systems, Enterprise Software, and Digital Marketing strategies. All projects are built on bespoke modern frameworks.
+            RG TECH provides professional software development in Web Applications (starting ₹10,000), Android Apps, Custom CRM & ERP Systems, and Enterprise Software solutions. All applications are engineered with modern, robust tech stacks.
           </p>
         </section>
 
         <section className="space-y-6">
           <h2 className="text-lg font-bold text-white tracking-tighter flex items-center gap-4">
             <span className="w-12 h-[1px] bg-white/20" />
-            02. Payment Architecture
+            02. Payment Terms
           </h2>
           <div className="pl-16 border-l border-white/5 space-y-4">
-            <p>Our standard milestone protocol for Indian Startups:</p>
+            <p>Our standard milestone schedule for client projects:</p>
             <ul className="list-none space-y-2 text-[10px]">
-              <li>• 50% Advance for project initiation.</li>
-              <li>• 30% Upon completion of core development/Beta.</li>
-              <li>• 20% Before final deployment and source transfer.</li>
+              <li>• 50% Advance upon project initiation and requirement sign-off.</li>
+              <li>• 30% Upon delivery of working core features / beta preview.</li>
+              <li>• 20% Upon final deployment, domain linking, and handover.</li>
             </ul>
-            <p>All prices are subject to custom requirements and scope changes.</p>
+            <p>Custom software and enterprise scopes follow customized milestone schedules.</p>
           </div>
         </section>
 
@@ -56,33 +56,33 @@ export default function TermsPage() {
             03. Delivery Timeline
           </h2>
           <p className="pl-16 border-l border-white/5">
-            Basic web projects typically deploy within 7-14 business days. Custom software and CRMs are subject to a detailed timeline agreed upon during the technical audit phase.
+            Standard web applications typically deploy within 7–14 business days. Custom CRM/ERP systems and Android applications follow an agreed-upon delivery roadmap outlined during technical planning.
           </p>
         </section>
 
         <section className="space-y-6">
           <h2 className="text-lg font-bold text-white tracking-tighter flex items-center gap-4">
             <span className="w-12 h-[1px] bg-white/20" />
-            04. Maintenance & Support
+            04. Maintenance & Technical Support
           </h2>
           <p className="pl-16 border-l border-white/5">
-            Post-deployment support is complimentary for the first 30 days. Extended maintenance and digital marketing retainers are billed on a monthly cycle starting after project completion.
+            Post-launch technical support is complimentary for the initial 30 days. Extended software maintenance, server management, and feature enhancements are available on monthly support agreements.
           </p>
         </section>
 
         <section className="space-y-6">
           <h2 className="text-lg font-bold text-white tracking-tighter flex items-center gap-4">
             <span className="w-12 h-[1px] bg-white/20" />
-            05. Intellectual Property
+            05. Code Ownership & IP
           </h2>
           <p className="pl-16 border-l border-white/5">
-            Upon full payment of all dues, the client acquires ownership of the final deployed code. RG TECH retains the right to use non-proprietary code snippets and architectural patterns for future developments.
+            Upon receipt of full payment, full ownership of the application codebase and assets transfers to the client. RG TECH maintains ethical confidentiality for all client data and intellectual property.
           </p>
         </section>
 
-        <footer className="pt-20 border-t border-white/10 text-[9px] text-white/20 flex justify-between items-center">
-          <span>RG TECH STARTUP PROTOCOL v4.1</span>
-          <span>JURISDICTION: INDIA</span>
+        <footer className="pt-20 border-t border-white/10 text-[9px] text-white/30 flex justify-between items-center">
+          <span>RG TECH • SOFTWARE DEVELOPMENT STUDIO</span>
+          <span>ODISHA & INDIA</span>
         </footer>
       </div>
     </article>

@@ -5,13 +5,12 @@ import { motion, AnimatePresence, useSpring } from 'framer-motion';
 import { Cpu, Zap, Code, ShieldCheck, Globe, Database } from 'lucide-react';
 
 const STATUS_MESSAGES = [
-  "Initializing Hardware...",
-  "Powering Neural Core...",
-  "Syncing Global Nodes...",
-  "Optimizing Visual Cortex...",
-  "Verifying Security Protocols...",
-  "Establishing Secure Link...",
-  "System fully operational."
+  "Building Scalable Architecture...",
+  "Loading Project Portfolio...",
+  "Configuring Full-Stack Solutions...",
+  "Preparing Modern Interfaces...",
+  "Optimizing Performance...",
+  "Software Development Ready."
 ];
 
 const TECH_ICONS = [
@@ -27,14 +26,11 @@ export default function Loader() {
   const [loading, setLoading] = useState(true);
   const [msgIndex, setMsgIndex] = useState(0);
   
-  // Balanced high-performance progress tracking for 3s duration
   const springProgress = useSpring(0, {
-    stiffness: 28, // Adjusted to reach 100 in ~2.8s
-    damping: 15,
+    stiffness: 75,
+    damping: 18,
     restDelta: 0.01
   });
-
-  const [displayProgress, setDisplayProgress] = useState(0);
 
   useEffect(() => {
     if (sessionStorage.getItem('rg-tech-loaded')) {
@@ -42,20 +38,14 @@ export default function Loader() {
       return;
     }
 
-    // Set a strict 3-second lifecycle
-    const DURATION = 3000;
+    const DURATION = 750;
     const startTime = Date.now();
     
-    // Start spring towards 100
     springProgress.set(100);
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      const progressValue = springProgress.get();
-      
-      setDisplayProgress(progressValue);
 
-      // Status message index based on actual time elapsed for accuracy
       const targetMsgIndex = Math.min(
         Math.floor((elapsed / DURATION) * STATUS_MESSAGES.length),
         STATUS_MESSAGES.length - 1
@@ -67,7 +57,7 @@ export default function Loader() {
         setLoading(false);
         sessionStorage.setItem('rg-tech-loaded', 'true');
       }
-    }, 16); // High frequency (60fps) for buttery smooth numbers since we have a fixed time now
+    }, 16);
 
     return () => clearInterval(interval);
   }, [springProgress]);
@@ -76,7 +66,7 @@ export default function Loader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-          key="blinkit-futuristic-loader"
+          key="software-studio-loader"
           initial={{ opacity: 1 }}
           exit={{ 
             y: "-100%",
@@ -84,7 +74,7 @@ export default function Loader() {
           }}
           className="fixed inset-0 z-[10000] bg-[#02040a] flex flex-col items-center justify-center overflow-hidden will-change-transform"
         >
-          {/* 1. Blinkit Style Top Progress Bar (Neon) - Using motion for smoothness */}
+          {/* Top Progress Bar */}
           <div className="absolute top-0 left-0 w-full h-[3px] bg-white/5 overflow-hidden">
             <motion.div 
               style={{ scaleX: springProgress.get() / 100 }}
@@ -93,11 +83,11 @@ export default function Loader() {
           </div>
 
           <div className="relative">
-            {/* Optimized Pulsing Back Glow */}
+            {/* Pulsing Back Glow */}
             <div className="absolute inset-0 bg-[#00d2ff] rounded-full blur-[100px] opacity-10 animate-pulse pointer-events-none" />
 
             <div className="relative flex flex-col items-center gap-8">
-              {/* Spinning Ring of Icons - Using CSS for core rotation to keep JS thread free */}
+              {/* Spinning Ring of Tech Icons */}
               <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
                 <div className="absolute inset-0 animate-[spin_20s_linear_infinite] will-change-transform">
                   {TECH_ICONS.map((item, i) => (
@@ -113,7 +103,7 @@ export default function Loader() {
                   ))}
                 </div>
 
-                {/* Central "RG" Logo - Hardware accelerated */}
+                {/* Central "RG" Logo */}
                 <motion.div
                   initial={{ opacity: 1 }}
                   animate={{ scale: [0.98, 1, 0.98] }}
@@ -150,18 +140,15 @@ export default function Loader() {
             </div>
           </div>
 
-          {/* 3. Blinkit Style Bottom Tagline (Futuristic Version) */}
+          {/* Bottom Software Badge */}
           <div className="absolute bottom-12 flex flex-col items-center gap-3">
             <div className="flex items-center gap-4 px-5 py-2.5 bg-white/[0.03] rounded-full border border-white/10 backdrop-blur-lg">
-              <span className="text-[10px] uppercase tracking-widest text-[#00d2ff] font-bold">Latency</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#00d2ff] font-bold">Software Development</span>
               <div className="h-4 w-px bg-white/10" />
-              <span className="text-[10px] uppercase tracking-widest text-white/80 font-bold">10ms Delivery</span>
+              <span className="text-[10px] uppercase tracking-widest text-white/80 font-bold">Web & App Engineering</span>
             </div>
-            <p className="text-[8px] uppercase tracking-[0.5em] text-white/10 font-mono">RG_TECH_v4.1.0_LATEST</p>
+            <p className="text-[8px] uppercase tracking-[0.5em] text-white/20 font-mono">RG TECH • SOFTWARE COMPANY</p>
           </div>
-
-          {/* Grain Overlay - Low opacity for performance */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.015] noise" />
         </motion.div>
       )}
     </AnimatePresence>

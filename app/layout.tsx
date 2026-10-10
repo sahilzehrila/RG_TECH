@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: "RG TECH | Best Software Solution in Odisha & India",
     template: "%s | RG TECH",
   },
-  description: "RG TECH is the premier software development company in Odisha, India. We deliver high-performance web applications, scalable android systems, custom CRM/ERP solutions, and enterprise software.",
+  description: "RG TECH is a full-stack software development company in Odisha, India. We deliver high-performance web applications, scalable android systems, custom CRM/ERP solutions, and enterprise software.",
   keywords: [
     "best software solution in Odisha",
     "software development company India",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "RG TECH | Best Software Solution in Odisha & India",
-    description: "Pioneering software development studio in Odisha, India specializing in Web, Android, and Enterprise solutions.",
+    description: "Software development company in Odisha, India specializing in Web, Android, and Enterprise solutions.",
     url: "https://rg-tech.vercel.app",
     siteName: "RG TECH",
     locale: "en_IN",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RG TECH | Software Development Studio",
+    title: "RG TECH | Software Development Company",
     description: "High-performance software solutions engineered in Odisha, India.",
     images: ["/icon.svg"],
   },
@@ -141,7 +141,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <Loader />
         <div className="mesh-bg" />
-        <div className="noise" />
         <Sparkles />
         <Cursor />
         <Navbar />

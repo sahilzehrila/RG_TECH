@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Monitor, Smartphone, Cpu, Shield, Zap, Globe, Download, Palette, GraduationCap } from 'lucide-react';
+import { gsap } from '@/lib/gsap';
 
 const services = [
   {
@@ -25,9 +26,9 @@ const services = [
   },
   {
     icon: <Download className="w-8 h-8 md:w-10 md:h-10" />,
-    title: "Modded Software",
-    description: "Premium modded applications and specialized software solutions. Cracked and enhanced versions for advanced utility.",
-    tags: ["Mod APK", "Cracked", "Software"]
+    title: "Custom Software & Utilities",
+    description: "Specialized enterprise tools, tailored utilities, and automation scripts built for high-efficiency business operations.",
+    tags: ["Custom Build", "Utilities", "Automation"]
   },
   {
     icon: <Palette className="w-8 h-8 md:w-10 md:h-10" />,
@@ -77,6 +78,10 @@ export default function Services() {
   const containerRef1 = useRef<HTMLDivElement>(null);
   const containerRef2 = useRef<HTMLDivElement>(null);
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
+
   const startAnimation1 = () => {
     setIsAutoPlaying1(true);
     controls1.start({
@@ -102,6 +107,53 @@ export default function Services() {
     };
   }, []);
 
+  // GSAP ScrollTrigger for Header and Desktop Grid Cards
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: "top 85%",
+              once: true,
+            }
+          }
+        );
+      }
+
+      if (cardsContainerRef.current) {
+        const cards = cardsContainerRef.current.children;
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 45 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: cardsContainerRef.current,
+              start: "top 80%",
+              once: true,
+            }
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const handleInteraction1 = () => {
     setIsAutoPlaying1(false);
     controls1.stop();
@@ -121,14 +173,14 @@ export default function Services() {
   const infiniteItems2 = [...row2, ...row2, ...row2, ...row2];
 
   return (
-    <section id="services" className="py-24 px-5 md:px-10 max-w-7xl mx-auto relative overflow-hidden">
-      <div className="mb-20">
-        <h2 className="text-4xl md:text-8xl font-bold text-white tracking-tighter hero-text uppercase">Expertise</h2>
-        <p className="text-white/20 text-[9px] tracking-[0.6em] uppercase mt-4">Core_Capabilities // Software Solutions Odisha & India</p>
+    <section ref={sectionRef} id="services" className="py-20 md:py-28 px-5 md:px-10 max-w-7xl mx-auto relative overflow-hidden">
+      <div ref={headerRef} className="mb-10 md:mb-20">
+        <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white tracking-tighter hero-text uppercase">Services</h2>
+        <p className="text-white/40 text-[9px] sm:text-xs tracking-[0.5em] md:tracking-[0.6em] uppercase mt-3 md:mt-4">Full-Stack Software Development // Odisha & India</p>
       </div>
 
-      {/* Mobile View: Independent Row Carousels */}
-      <div className="md:hidden space-y-6 -mx-5">
+      {/* Mobile View: Bigger & Prominent Carousels */}
+      <div className="md:hidden space-y-4 -mx-5">
         {/* Row 1: Left moving */}
         <div 
           ref={containerRef1}
@@ -144,16 +196,18 @@ export default function Services() {
             {infiniteItems1.map((service, index) => (
               <div
                 key={index}
-                className="glass-morphism p-6 rounded-[2rem] border-white/5 flex-shrink-0 w-[75vw] snap-center"
+                className="glass-morphism p-5 sm:p-6 rounded-[1.8rem] border border-white/10 flex-shrink-0 w-[72vw] sm:w-[55vw] snap-center"
               >
-                <div className="text-cyan-500 mb-4">{service.icon}</div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-tight mb-2">{service.title}</h3>
-                <p className="text-white/40 text-[10px] leading-relaxed uppercase tracking-wider mb-4 line-clamp-2">
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-cyan-400 mb-3.5 shadow-inner [&>svg]:w-6 [&>svg]:h-6">
+                  {service.icon}
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-white uppercase tracking-tight mb-1.5">{service.title}</h3>
+                <p className="text-white/50 text-[10px] sm:text-xs leading-relaxed uppercase tracking-wider mb-3.5 line-clamp-3">
                   {service.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {service.tags.slice(0, 2).map(tag => (
-                    <span key={tag} className="text-[7px] text-white/30 font-bold border border-white/5 px-2 py-1 rounded-md uppercase tracking-widest">
+                <div className="flex flex-wrap gap-1.5">
+                  {service.tags.slice(0, 3).map(tag => (
+                    <span key={tag} className="text-[8px] text-white/50 font-bold border border-white/10 px-2 py-0.5 rounded uppercase tracking-widest bg-white/[0.02]">
                       {tag}
                     </span>
                   ))}
@@ -178,16 +232,18 @@ export default function Services() {
             {infiniteItems2.map((service, index) => (
               <div
                 key={index}
-                className="glass-morphism p-6 rounded-[2rem] border-white/5 flex-shrink-0 w-[75vw] snap-center"
+                className="glass-morphism p-5 sm:p-6 rounded-[1.8rem] border border-white/10 flex-shrink-0 w-[72vw] sm:w-[55vw] snap-center"
               >
-                <div className="text-cyan-500 mb-4">{service.icon}</div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-tight mb-2">{service.title}</h3>
-                <p className="text-white/40 text-[10px] leading-relaxed uppercase tracking-wider mb-4 line-clamp-2">
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-cyan-400 mb-3.5 shadow-inner [&>svg]:w-6 [&>svg]:h-6">
+                  {service.icon}
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-white uppercase tracking-tight mb-1.5">{service.title}</h3>
+                <p className="text-white/50 text-[10px] sm:text-xs leading-relaxed uppercase tracking-wider mb-3.5 line-clamp-3">
                   {service.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {service.tags.slice(0, 2).map(tag => (
-                    <span key={tag} className="text-[7px] text-white/30 font-bold border border-white/5 px-2 py-1 rounded-md uppercase tracking-widest">
+                <div className="flex flex-wrap gap-1.5">
+                  {service.tags.slice(0, 3).map(tag => (
+                    <span key={tag} className="text-[8px] text-white/50 font-bold border border-white/10 px-2 py-0.5 rounded uppercase tracking-widest bg-white/[0.02]">
                       {tag}
                     </span>
                   ))}
@@ -198,32 +254,35 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Desktop View: Original Grid */}
-      <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Desktop View: Original Grid with GSAP ScrollTrigger */}
+      <div ref={cardsContainerRef} className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.8 }}
-            className="glass-morphism p-8 md:p-10 rounded-[2.5rem] border-white/5 hover:border-white/10 transition-all group"
+            className="liquid-card glass-morphism p-8 md:p-10 rounded-[2.5rem] transition-all group relative overflow-hidden"
           >
-            <div className="text-cyan-500 mb-8 group-hover:scale-110 transition-transform duration-500 origin-left">
-              {service.icon}
+            <div className="flex justify-between items-center mb-8">
+              <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-cyan-400 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/10 group-hover:scale-105 transition-all duration-500">
+                {service.icon}
+              </div>
+              <span className="text-[10px] font-mono text-white/20 tracking-widest font-bold">
+                0{index + 1}
+              </span>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-4">{service.title}</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+              {service.title}
+            </h3>
             <p className="text-white/40 text-[10px] md:text-xs leading-relaxed uppercase tracking-wider mb-8">
               {service.description}
             </p>
             <div className="flex flex-wrap gap-2">
               {service.tags.map(tag => (
-                <span key={tag} className="text-[8px] text-white/30 font-bold border border-white/5 px-2 py-1 rounded-md uppercase tracking-widest">
+                <span key={tag} className="text-[8px] text-white/40 group-hover:text-white/70 font-bold border border-white/10 px-2.5 py-1 rounded-md uppercase tracking-widest bg-white/[0.02]">
                   {tag}
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

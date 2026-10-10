@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -12,51 +12,58 @@ export default function Navbar() {
 
   const links = [
     { name: 'Home', href: '/' },
-    { name: 'Expertise', href: '/#services' },
+    { name: 'Services', href: '/#services' },
     { name: 'Projects', href: '/#projects' },
-    { name: 'Modules', href: '/#pricing' },
-    { name: 'Protocol', href: '/terms' },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Terms', href: '/terms' },
   ];
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-[60] backdrop-blur-lg bg-black/30 border-b border-white/5">
+      <nav className="fixed top-0 w-full z-[60] backdrop-blur-xl bg-[#02040a]/65 border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto px-5 md:px-10 py-5 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-white tracking-tighter uppercase">
-            RG <span className="text-white/30">TECH</span>
+          <Link href="/" className="text-2xl font-bold text-white tracking-tighter uppercase group flex items-center gap-1.5 hover:opacity-90 transition-opacity">
+            <span>RG TECH</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex gap-12">
+          <div className="hidden md:flex items-center gap-10">
             {links.map(link => (
               <MagneticButton key={link.name}>
-                <Link 
-                  href={link.href} 
-                  className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors"
+                <Link
+                  href={link.href}
+                  className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/45 hover:text-white transition-colors"
                 >
                   {link.name}
                 </Link>
               </MagneticButton>
             ))}
+            <Link
+              href="/#contact"
+              className="text-[9px] font-black uppercase tracking-[0.3em] px-5 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/[0.06] text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,210,255,0.2)] transition-all active:scale-95"
+            >
+              Get Quote
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
             className="md:hidden w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 active:scale-90 transition-all"
           >
             {isOpen ? <X size={20} className="text-white" /> : <Menu size={20} className="text-white" />}
           </button>
         </div>
 
-        {/* Global Neural Progress Bar */}
-        <motion.div 
+        {/* Reading Progress Indicator */}
+        <motion.div
           style={{ scaleX: scrollYProgress }}
           className="h-[1px] bg-white origin-left w-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
         />
       </nav>
 
-      {/* Mobile Drawer (Bottom Sheet) */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -95,8 +102,8 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="mt-16 pt-10 border-t border-white/5 flex justify-between items-center text-[9px] text-white/20 uppercase tracking-[0.4em]">
-                <span>RG TECH v4.1</span>
-                <span>OS ACTIVE</span>
+                <span>RG TECH</span>
+                <span>SOFTWARE COMPANY</span>
               </div>
             </motion.div>
           </>

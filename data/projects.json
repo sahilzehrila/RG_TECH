@@ -70,5 +70,21 @@
     "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fprotine-bowl.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
     "link": "https://protine-bowl.vercel.app/",
     "tags": ["Food", "Nutrition", "Ordering"]
+  },
+  {
+    "id": "10",
+    "title": "AIMS ACADEMY",
+    "description": "Comprehensive educational platform and academy portal for structured student learning and course management.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Faimsacademy.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://aimsacademy.vercel.app/",
+    "tags": ["Education", "Academy", "Portal"]
+  },
+  {
+    "id": "11",
+    "title": "HIGH ON SMILE",
+    "description": "State-of-the-art dental clinic and healthcare platform for patient discovery and appointments.",
+    "imageUrl": "https://api.microlink.io/?url=https%3A%2F%2Fwww.highonsmilehos.com%2F&screenshot=true&meta=false&embed=screenshot.url",
+    "link": "https://www.highonsmilehos.com/",
+    "tags": ["Healthcare", "Hospital", "Dental"]
   }
 ]

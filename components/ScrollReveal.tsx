@@ -11,8 +11,8 @@ export default function ScrollReveal({ children, parallax = 0 }: { children: Rea
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [parallax, -parallax]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.12, 1], [0, 1, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.12], [0.98, 1]);
 
   return (
     <motion.div

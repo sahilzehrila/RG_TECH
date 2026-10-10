@@ -1,8 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import MagneticButton from './MagneticButton';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,15 +10,15 @@ export default function Footer() {
       title: 'Navigation',
       links: [
         { name: 'Home', href: '/' },
+        { name: 'Services', href: '/#services' },
         { name: 'Projects', href: '/#projects' },
-        { name: 'Modules', href: '/#pricing' },
-        { name: 'Protocol', href: '/terms' },
+        { name: 'Pricing', href: '/#pricing' },
       ],
     },
     {
       title: 'Connect',
       links: [
-        { name: 'X / Twitter', href: '#' },
+        { name: 'WhatsApp', href: 'https://api.whatsapp.com/send?phone=916370810878' },
         { name: 'GitHub', href: '#' },
         { name: 'LinkedIn', href: '#' },
         { name: 'Instagram', href: '#' },
@@ -29,9 +27,9 @@ export default function Footer() {
     {
       title: 'Legal',
       links: [
-        { name: 'Privacy Policy', href: '#' },
         { name: 'Terms of Service', href: '/terms' },
-        { name: 'Cookie Policy', href: '#' },
+        { name: 'Privacy Policy', href: '/terms' },
+        { name: 'Project Support', href: '/#contact' },
       ],
     },
   ];
@@ -45,11 +43,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 md:gap-12 mb-12 md:mb-20">
           {/* Brand Section */}
           <div className="col-span-2 lg:col-span-1">
-            <Link href="/" className="text-2xl md:text-3xl font-bold text-white tracking-tighter uppercase mb-4 md:mb-6 block">
-              RG <span className="text-white/30">TECH</span>
+            <Link href="/" className="text-2xl md:text-3xl font-bold text-white tracking-tighter uppercase mb-4 md:mb-6 block hover:opacity-90 transition-opacity">
+              <span>RG TECH</span>
             </Link>
             <p className="text-white/40 text-[10px] md:text-xs tracking-widest uppercase leading-relaxed max-w-xs">
-              Pioneering the intersection of advanced engineering and global creative expression.
+              Full-stack software development company in Odisha, India engineering high-performance web applications, mobile systems, and enterprise software.
             </p>
           </div>
 
@@ -63,7 +61,7 @@ export default function Footer() {
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link 
-                      href={link.href}
+                      href={link.href} 
                       className="text-white/60 hover:text-white text-[10px] md:text-xs uppercase tracking-widest transition-colors duration-300"
                     >
                       {link.name}
@@ -79,13 +77,13 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
           <div className="flex items-center gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#00d2ff] animate-pulse" />
-            <span className="text-[8px] md:text-[9px] text-white/20 uppercase tracking-[0.4em]">
-              RG-OS v4.1 ACTIVE
+            <span className="text-[8px] md:text-[9px] text-white/30 uppercase tracking-[0.4em]">
+              SOFTWARE DEVELOPMENT COMPANY • ODISHA & INDIA
             </span>
           </div>
           
           <div className="text-[8px] md:text-[9px] text-white/20 uppercase tracking-[0.4em] text-center">
-            © {currentYear} RG TECH.
+            © {currentYear} RG TECH. ALL RIGHTS RESERVED.
           </div>
         </div>
       </div>

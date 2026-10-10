@@ -1,13 +1,16 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
+import { gsap } from "@/lib/gsap";
 
 const World = dynamic(() => import("./ui/globe").then((m) => m.World), {
   ssr: false,
 });
 
 export function GlobeDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textColRef = useRef<HTMLDivElement>(null);
+
   const globeConfig = {
     pointSize: 4,
     globeColor: "#02040a",
@@ -44,30 +47,51 @@ export function GlobeDemo() {
     { order: 4, startLat: -34.6037, startLng: -58.3816, endLat: 22.3193, endLng: 114.1694, arcAlt: 0.7, color: colors[2] },
   ];
 
+  useEffect(() => {
+    if (!containerRef.current || !textColRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        textColRef.current,
+        { opacity: 0, x: -35 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: textColRef.current,
+            start: "top 80%",
+            once: true,
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="relative w-full py-10 md:py-32 overflow-hidden bg-transparent">
+    <div ref={containerRef} className="relative w-full py-10 md:py-32 overflow-hidden bg-transparent">
       <div className="max-w-7xl mx-auto px-5 md:px-10 relative z-50">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
+          <div
+            ref={textColRef}
             className="space-y-6 text-center lg:text-left order-1"
           >
             <h2 className="text-4xl md:text-7xl xl:text-8xl font-bold text-white tracking-tighter hero-text uppercase leading-none">
-              Global <br className="hidden lg:block" /> Deployment Hub
+              Global Software <br className="hidden lg:block" /> Delivery
             </h2>
             <p className="text-white/40 text-[9px] md:text-xs tracking-[0.8em] uppercase max-w-xl mx-auto lg:mx-0 leading-relaxed font-bold">
-              Connecting Global Creativity with Advanced Engineering
+              Engineering High-Performance Digital Solutions for Clients Worldwide
             </p>
             <div className="pt-4 flex justify-center lg:justify-start">
               <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-                <span className="text-[8px] text-white/40 uppercase tracking-[0.2em]">Network Status: Active</span>
+                <span className="text-[8px] text-white/50 uppercase tracking-[0.2em]">Global Deployments Active</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Seamless Globe Wrapper */}
           <div className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] flex items-center justify-center order-2 overflow-hidden lg:overflow-visible">
